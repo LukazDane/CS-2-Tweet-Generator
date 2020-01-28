@@ -1,7 +1,8 @@
-def frequency():
-    words = ("one", "fish", "two", "fish", "red", "fish", "blue", "fish")
-    histogram = {}
+words = ["one", "fish", "two", "fish", "red", "fish", "blue", "fish"]
+histogram = {}
 
+
+def frequency():
     for i in words:
         histogram[i] = histogram.get(i, 0) + 1
     print(histogram)
@@ -10,5 +11,14 @@ def frequency():
         print(i + ": " + str(histogram.get(i)))
 
 
+def unique():
+    unique_words = []
+    for i in histogram:
+        if i not in unique_words:
+            unique_words.append(i)
+    print(unique_words)
+
+
 if __name__ == '__main__':
     frequency()
+    unique()
