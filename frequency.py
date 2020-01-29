@@ -12,11 +12,11 @@ def frequency():
 
 
 def unique():
-    unique_words = []
-    for i in histogram:
-        if i not in unique_words:
-            unique_words.append(i)
-    print(unique_words)
+    # unique_words = []
+    # for i in histogram:
+    #     if i not in unique_words:
+    #         unique_words.append(i)
+    print(histogram.keys())
 
 
 if __name__ == '__main__':
