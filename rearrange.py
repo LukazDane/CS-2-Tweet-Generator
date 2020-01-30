@@ -14,5 +14,5 @@ def rearrange():
 
 if __name__ == '__main__':
     word = rearrange()
-    print(words[0:])
-    print(*shuffled)
+    print(*words[0:])
+    # print(*shuffled) #
