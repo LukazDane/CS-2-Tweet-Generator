@@ -2,10 +2,12 @@ words = ["one", "fish", "two", "fish", "red", "fish", "blue", "fish"]
 hg = {}
 
 
-def histogram(ls):
-    for i in ls:
-        hg[i] = hg.get(i, 0) + 1
-    return hg
+def histogram(lines):
+    histogram = {}
+    for word in lines:
+        word = word.rstrip()
+        histogram[word] = histogram.get(word, 0) + 1
+    return histogram
 
     # for (i) in histogram:
     #     print(i + ": " + str(histogram.get(i)))
