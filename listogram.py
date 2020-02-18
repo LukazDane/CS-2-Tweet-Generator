@@ -1,4 +1,4 @@
-from random import randint
+import random
 
 
 class Listogram:
@@ -17,7 +17,21 @@ class Listogram:
         '''Creates a histogram list of lists using the word_list property and returns it'''
 
         # TODO: use your listogram function as a starting point to complete this method
-        pass
+        new_word_list = []
+        list_of_lists = []
+
+        for word in self.word_list:
+            if word in new_word_list:
+                word_index = new_word_list.index(word)
+                new_word_list[word_index + 1] += 1
+            else:
+                new_word_list.append(word)
+                new_word_list.append(1)
+
+        for x in range(0, len(new_word_list), 2):
+            list_of_lists.append([new_word_list[x], new_word_list[x+1]])
+
+        return list_of_lists
 
     def get_num_tokens(self):
         '''gets the number of tokens in the listogram'''
@@ -30,25 +44,33 @@ class Listogram:
     def get_index(self, word, list_histogram):
         '''searches in the list histogram parameter and returns the index of the inner list that contains the word if present'''
         # TODO: use your get_index function as a starting point to complete this method
-        pass
+        return [(i, sub.index(word)) for (i, sub) in enumerate(list_histogram) if word in sub]
 
     def frequency(self, word):
         '''returns the frequency or count of the given word in the list of lists histogram'''
         # TODO: use your frequency and get_index function as a starting point to complete this method
         # You will need to adapt it a little bit to work with listogram
-        pass
+        for i in self.list_histogram:
+            if i[0] == word:
+                return i[1]
+        return 0
 
     def unique_words(self):
         '''returns the number of unique words in the list of lists histogram'''
         # TODO: use your unique words function as a starting point to complete this method
         # You will need to adapt it a little bit to work with listogram
-        pass
+        return len(list(self.list_histogram))
 
     def sample(self):
         '''Randomly samples from the list of list histogram based on the frequency, returns a word'''
-
         # TODO: use your sample function as a starting point to complete this method
         # You will need to adapt it a little bit to work with listogram
+        total = 0
+        i = random.randint(1, self.tokens)
+        for item in self.list_histogram:
+            total += item[1]
+            if i <= total:
+                return item[0]
 
 
 def print_listogram(word_list):
