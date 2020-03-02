@@ -92,7 +92,7 @@ class LinkedList(object):
         node = self.head
         while node is not None:
             if quality(node.data):
-                return node
+                return node.data
             else:
                 node = node.next
         return None

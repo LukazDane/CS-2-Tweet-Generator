@@ -32,7 +32,14 @@ class MarkovChain:
 
     def walk(self, num_words):
         # TODO: generate a sentence num_words long using the markov chain
-        pass
+        sentence = ""
+        start = self.first_word
+        sentence += start
+        word = start
+        for i in range(1, num_words):
+            word = Dictogram(self.markov_chain).sample()
+            sentence += " " + word
+        return sentence
 
     def print_chain(self):
         for word, histogram in self.markov_chain.items():
