@@ -1,6 +1,7 @@
 from flask import Flask
 from frequency import histogram
 from sample import sample
+from markov import MarkovChain
 app = Flask(__name__)
 
 
@@ -12,9 +13,11 @@ def gen_word():
 
     sentence = ""
     num_words = 10
-    for i in range(num_words):
-        word = sample(my_histogram)
-        sentence += " " + word
+    # for i in range(num_words):
+    #     word = sample(my_histogram)
+    #     sentence += " " + word
+    markovchain = MarkovChain(lines)
+    sentence = markovchain.walk(num_words)
     return sentence
 
 
